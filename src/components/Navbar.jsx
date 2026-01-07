@@ -173,7 +173,7 @@ const Navbar = () => {
 
         .hamburger.open { background: transparent; }
         .hamburger.open::before,
-        .hamburger.open::after { background: #000000; }
+        .hamburger.open::after { background: #ffffff; }
         .hamburger.open::before { transform: rotate(45deg); }
         .hamburger.open::after { transform: rotate(-45deg); }
 
@@ -217,9 +217,9 @@ const Navbar = () => {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            gap: 3.5rem;
-            padding: 80px 30px 40px;
+            justify-content: flex-start;
+            gap: 2.5rem;
+            padding: 60px 30px 40px;
             background: rgba(5, 5, 5, 0.8);
             backdrop-filter: blur(15px);
             border-left: 1px solid rgba(255, 255, 255, 0.05);
