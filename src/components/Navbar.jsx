@@ -202,6 +202,9 @@ const Navbar = () => {
             pointer-events: none;
             transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
             z-index: 1500;
+            background-image: url('https://images.unsplash.com/photo-1557683311-eac922347aa1?q=80&w=2029&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
           }
 
           .mobile-menu.open {
@@ -215,26 +218,44 @@ const Navbar = () => {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 100px 40px 60px;
-            background: radial-gradient(circle at top right, rgba(109, 40, 217, 0.05), transparent);
+            padding: 120px 40px 60px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
           }
 
           .mobile-links {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
           }
 
           .mobile-nav-link {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #1a1a1a;
-            letter-spacing: -1px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #111111;
+            letter-spacing: -0.5px;
             text-transform: capitalize;
             text-decoration: none;
             opacity: 0;
             transform: translateY(20px);
             transition: 0.4s ease;
+            position: relative;
+            width: fit-content;
+          }
+
+          .mobile-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: 0.3s;
+          }
+
+          .mobile-nav-link:active::after {
+            width: 100%;
           }
 
           .mobile-menu.open .mobile-nav-link {
@@ -250,9 +271,9 @@ const Navbar = () => {
           }
 
           .mobile-socials p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            color: #555;
+            font-size: 0.8rem;
+            margin-bottom: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
@@ -260,21 +281,20 @@ const Navbar = () => {
 
           .mobile-social-icons {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
           }
 
           .mobile-social-icons a {
-            color: #1a1a1a;
+            color: #111;
             font-weight: 600;
-            font-size: 1rem;
-            text-decoration: underline;
-            text-decoration-color: var(--accent-primary);
+            font-size: 0.9rem;
+            text-decoration: none;
           }
 
           @keyframes slideUpFade {
             from {
               opacity: 0;
-              transform: translateY(30px);
+              transform: translateY(20px);
             }
             to {
               opacity: 1;
