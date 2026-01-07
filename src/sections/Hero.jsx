@@ -184,7 +184,6 @@ const Hero = () => {
           }
 
           .hero-visual {
-            order: -1;
             margin-bottom: 2rem;
           }
 
