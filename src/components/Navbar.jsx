@@ -195,14 +195,13 @@ const Navbar = () => {
             left: 0;
             width: 100%;
             height: 100vh;
-            background: #ffffff;
             display: block;
             visibility: hidden;
             opacity: 0;
             pointer-events: none;
-            transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+            transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
             z-index: 1500;
-            background-image: url('https://images.unsplash.com/photo-1557683311-eac922347aa1?q=80&w=2029&auto=format&fit=crop');
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
           }
@@ -218,87 +217,94 @@ const Navbar = () => {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 120px 40px 60px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            padding: 100px 30px 50px;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
           }
 
           .mobile-links {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 0.8rem;
           }
 
           .mobile-nav-link {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #111111;
-            letter-spacing: -0.5px;
-            text-transform: capitalize;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             text-decoration: none;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateX(20px);
             transition: 0.4s ease;
-            position: relative;
-            width: fit-content;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
           }
 
-          .mobile-nav-link::after {
+          .mobile-nav-link::before {
             content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background: var(--accent-primary);
             transition: 0.3s;
           }
 
-          .mobile-nav-link:active::after {
-            width: 100%;
-          }
-
           .mobile-menu.open .mobile-nav-link {
             opacity: 1;
-            transform: translateY(0);
-            animation: slideUpFade 0.5s ease forwards;
+            transform: translateX(0);
+            animation: slideRightFade 0.5s ease forwards;
+          }
+
+          .mobile-menu.open .mobile-nav-link:hover::before {
+            width: 20px;
           }
 
           .mobile-socials {
             margin-top: auto;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
           }
 
           .mobile-socials p {
-            color: #555;
-            font-size: 0.8rem;
-            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-weight: 700;
           }
 
           .mobile-social-icons {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
           }
 
           .mobile-social-icons a {
-            color: #111;
-            font-weight: 600;
-            font-size: 0.9rem;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.8rem;
             text-decoration: none;
+            opacity: 0.7;
+            transition: 0.3s;
           }
 
-          @keyframes slideUpFade {
+          .mobile-social-icons a:hover {
+            opacity: 1;
+            color: var(--accent-secondary);
+          }
+
+          @keyframes slideRightFade {
             from {
               opacity: 0;
-              transform: translateY(20px);
+              transform: translateX(20px);
             }
             to {
               opacity: 1;
-              transform: translateY(0);
+              transform: translateX(0);
             }
           }
         }
