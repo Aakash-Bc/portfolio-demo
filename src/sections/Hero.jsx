@@ -146,22 +146,73 @@ const Hero = () => {
         .boolean { color: var(--accent-primary); }
 
         @media (max-width: 968px) {
+          .hero-section {
+            padding-top: 100px;
+            padding-bottom: 3rem;
+            min-height: auto;
+            text-align: center;
+          }
+
           .hero-content {
             grid-template-columns: 1fr;
-            text-align: center;
             gap: 3rem;
           }
 
           .hero-title {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
           }
 
-          .hero-buttons {
-            justify-content: center;
+          .hero-subtitle {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
           }
 
           .hero-description {
             margin: 0 auto 2.5rem;
+            font-size: 1rem;
+            max-width: 100%;
+          }
+
+          .hero-buttons {
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .btn {
+            width: 100%;
+            justify-content: center;
+          }
+
+          .hero-visual {
+            order: -1;
+            margin-bottom: 2rem;
+          }
+
+          .code-block-decoration {
+            transform: none;
+            width: 100%;
+            max-width: 400px;
+            font-size: 0.8rem;
+            padding: 1.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-section {
+            padding-top: 80px;
+          }
+          
+          .hero-title {
+            font-size: 2.2rem;
+          }
+          
+          .hero-subtitle {
+            font-size: 1rem;
+          }
+          
+          .code-block-decoration {
+            padding: 1rem;
+            font-size: 0.7rem;
           }
         }
       `}</style>

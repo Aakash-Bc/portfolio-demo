@@ -128,23 +128,38 @@ const Navbar = () => {
 
         .mobile-menu-btn {
           display: none;
-          flex-direction: column;
-          gap: 6px;
-          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          z-index: 1001;
         }
 
         .hamburger {
           width: 24px;
           height: 2px;
           background: var(--text-primary);
+          position: relative;
           transition: 0.3s;
         }
 
-        .mobile-menu {
-          display: none;
+        .hamburger::before,
+        .hamburger::after {
+          content: '';
+          position: absolute;
+          width: 24px;
+          height: 2px;
+          background: var(--text-primary);
+          transition: 0.3s;
         }
-        
-        /* Mobile Styles */
+
+        .hamburger::before { transform: translateY(-8px); }
+        .hamburger::after { transform: translateY(8px); }
+
+        .hamburger.open { background: transparent; }
+        .hamburger.open::before { transform: rotate(45deg); }
+        .hamburger.open::after { transform: rotate(-45deg); }
+
         @media (max-width: 768px) {
           .desktop-menu {
             display: none;
@@ -158,16 +173,16 @@ const Navbar = () => {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 70%;
+            width: 100%;
             height: 100vh;
             background: var(--bg-card);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
-            transition: 0.3s ease-in-out;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            gap: 2.5rem;
+            transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+            z-index: 1000;
           }
 
           .mobile-menu.open {
@@ -175,9 +190,11 @@ const Navbar = () => {
           }
 
           .mobile-nav-link {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
           }
         }
       `}</style>

@@ -142,3 +142,25 @@ img {
   background: var(--accent-primary);
   transform: translateY(-2px);
 }
+
+/* Global Responsiveness */
+@media (max-width: 768px) {
+  :root {
+    --section-spacing: 3rem;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
