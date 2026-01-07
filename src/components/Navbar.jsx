@@ -160,6 +160,10 @@ const Navbar = () => {
         .hamburger.open::before { transform: rotate(45deg); }
         .hamburger.open::after { transform: rotate(-45deg); }
 
+        .mobile-menu {
+          display: none;
+        }
+
         @media (max-width: 768px) {
           .desktop-menu {
             display: none;
