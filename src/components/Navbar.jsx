@@ -46,16 +46,30 @@ const Navbar = () => {
         </button>
 
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="mobile-nav-link"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
+          <div className="mobile-menu-inner">
+            <div className="mobile-links">
+              {navLinks.map((link, index) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="mobile-nav-link"
+                  style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            <div className="mobile-socials">
+              <p>Get in Touch</p>
+              <div className="mobile-social-icons">
+                <a href="https://github.com/Aakash-Bc" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/aakash-bc-7a3773281" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.facebook.com/aakash.budathoki.18" target="_blank" rel="noopener noreferrer">Facebook</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -104,7 +118,7 @@ const Navbar = () => {
 
         .dot {
           color: var(--accent-secondary);
-          font-size: 2rem;
+          font-size: 2.2rem;
           line-height: 0;
           text-shadow: 0 0 10px var(--accent-secondary);
         }
@@ -132,7 +146,7 @@ const Navbar = () => {
           align-items: center;
           width: 40px;
           height: 40px;
-          z-index: 1001;
+          z-index: 2000;
         }
 
         .hamburger {
@@ -157,6 +171,8 @@ const Navbar = () => {
         .hamburger::after { transform: translateY(8px); }
 
         .hamburger.open { background: transparent; }
+        .hamburger.open::before,
+        .hamburger.open::after { background: #000000; }
         .hamburger.open::before { transform: rotate(45deg); }
         .hamburger.open::after { transform: rotate(-45deg); }
 
@@ -176,29 +192,94 @@ const Navbar = () => {
           .mobile-menu {
             position: fixed;
             top: 0;
-            right: -100%;
+            left: 0;
             width: 100%;
             height: 100vh;
             background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2.5rem;
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
             transition: 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
-            z-index: 1000;
+            z-index: 1500;
           }
 
           .mobile-menu.open {
-            right: 0;
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+          }
+
+          .mobile-menu-inner {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 100px 40px 60px;
+            background: radial-gradient(circle at top right, rgba(109, 40, 217, 0.05), transparent);
+          }
+
+          .mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
           }
 
           .mobile-nav-link {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #000000;
-            letter-spacing: 1px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+            text-transform: capitalize;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.4s ease;
+          }
+
+          .mobile-menu.open .mobile-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideUpFade 0.5s ease forwards;
+          }
+
+          .mobile-socials {
+            margin-top: auto;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 2rem;
+          }
+
+          .mobile-socials p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+          }
+
+          .mobile-social-icons {
+            display: flex;
+            gap: 1.5rem;
+          }
+
+          .mobile-social-icons a {
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: underline;
+            text-decoration-color: var(--accent-primary);
+          }
+
+          @keyframes slideUpFade {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
         }
       `}</style>
