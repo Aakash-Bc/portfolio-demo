@@ -1,0 +1,5 @@
+/* App-specific styles can go here, but we'll use index.css for globals */
+.app-container {
+  overflow: hidden;
+  /* Prevent horizontal scroll glitches */
+}
