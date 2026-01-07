@@ -67,6 +67,7 @@ const Navbar = () => {
                 <a href="https://github.com/Aakash-Bc" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://www.linkedin.com/in/aakash-bc-7a3773281" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://www.facebook.com/aakash.budathoki.18" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="https://www.instagram.com/aakashbc__/" target="_blank" rel="noopener noreferrer">Instagram</a>
               </div>
             </div>
           </div>
@@ -216,8 +217,9 @@ const Navbar = () => {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 100px 30px 50px;
+            justify-content: center;
+            gap: 3.5rem;
+            padding: 80px 30px 40px;
             background: rgba(5, 5, 5, 0.8);
             backdrop-filter: blur(15px);
             border-left: 1px solid rgba(255, 255, 255, 0.05);
@@ -264,7 +266,6 @@ const Navbar = () => {
           }
 
           .mobile-socials {
-            margin-top: auto;
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 1.5rem;
           }
