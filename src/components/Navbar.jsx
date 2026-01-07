@@ -179,7 +179,7 @@ const Navbar = () => {
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: var(--bg-card);
+            background: #ffffff;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -196,7 +196,7 @@ const Navbar = () => {
           .mobile-nav-link {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #000000;
             letter-spacing: 1px;
             text-transform: uppercase;
           }
