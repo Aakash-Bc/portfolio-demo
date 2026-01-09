@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaEnvelope, FaPhoneAlt, FaViber, FaMapMarkerAlt } from 'react-icons/fa';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import contactBg from '../assets/contact-bg.png';
 
 const Contact = () => {
@@ -42,8 +42,8 @@ const Contact = () => {
     // Phone: Exact 10 digits
     if (!formData.phone) {
       tempErrors.phone = "Phone number is required";
-    } else if (!/^\d{10}$/.test(formData.phone)) {
-      tempErrors.phone = "Phone number must be exactly 10 digits";
+    } else if (!/^\d{10,15}$/.test(formData.phone.replace(/\s/g, ''))) {
+      tempErrors.phone = "Phone number must be between 10 to 15 digits";
     }
 
     if (!formData.message.trim()) tempErrors.message = "Message cannot be empty";
@@ -68,26 +68,32 @@ const Contact = () => {
     setSending(true);
 
     try {
-      await emailjs.send(
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        message: formData.message,
+        // Optional: you can add more fields here if needed by your template
+        to_name: "Aakash",
+      };
+
+      const result = await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          address: formData.address,
-          message: formData.message
-        },
+        templateParams,
         PUBLIC_KEY
       );
 
+      console.log("EmailJS Success:", result.text);
       setShowSuccess(true);
       setFormData({ name: '', email: '', phone: '', address: '', message: '' });
       setTimeout(() => setShowSuccess(false), 5000);
 
     } catch (error) {
-      console.error("EmailJS Error:", error);
-      alert("Failed to send message. Please try again later.");
+      console.error("EmailJS Error details:", error);
+      const errorMessage = error?.text || error?.message || "Failed to send message. Please try again later.";
+      alert(errorMessage);
     } finally {
       setSending(false);
     }
