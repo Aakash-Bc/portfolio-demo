@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaEnvelope, FaPhoneAlt, FaViber, FaMapMarkerAlt } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
 import contactBg from '../assets/contact-bg.png';
 
 const Contact = () => {
@@ -9,7 +10,8 @@ const Contact = () => {
     email: '',
     phone: '',
     address: '',
-    message: ''
+    message: '',
+    honeypot: '' // Spam protection
   });
 
   const [errors, setErrors] = React.useState({});
@@ -63,9 +65,19 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    // 🛡️ Honeypot Check (Spam protection)
+    if (formData.honeypot) {
+      console.log("Spam detected!");
+      return; // Silently ignore bot submissions
+    }
+
+    if (!validate()) {
+      toast.error("Please fix the errors in the form");
+      return;
+    }
 
     setSending(true);
+    const loadingToast = toast.loading("Sending your message...");
 
     try {
       const templateParams = {
@@ -74,26 +86,29 @@ const Contact = () => {
         phone: formData.phone,
         address: formData.address,
         message: formData.message,
-        // Optional: you can add more fields here if needed by your template
         to_name: "Aakash",
+        reply_to: formData.email, // 📩 Important for Auto-reply mapping in EmailJS
       };
 
       const result = await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
         templateParams,
-        PUBLIC_KEY
+        { publicKey: PUBLIC_KEY }
       );
 
-      console.log("EmailJS Success:", result.text);
+      console.log("EmailJS Success:", result.status, result.text);
+
+      toast.success("Message sent successfully!", { id: loadingToast });
       setShowSuccess(true);
-      setFormData({ name: '', email: '', phone: '', address: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', address: '', message: '', honeypot: '' });
+
       setTimeout(() => setShowSuccess(false), 5000);
 
     } catch (error) {
       console.error("EmailJS Error details:", error);
-      const errorMessage = error?.text || error?.message || "Failed to send message. Please try again later.";
-      alert(errorMessage);
+      const errorMsg = error?.text || error?.message || (typeof error === 'string' ? error : "Failed to send message.");
+      toast.error(`Error: ${errorMsg}`, { id: loadingToast });
     } finally {
       setSending(false);
     }
@@ -132,7 +147,20 @@ const Contact = () => {
 
         {/* Contact Form */}
         <form className="contact-form" onSubmit={handleSubmit}>
+          <Toaster position="top-right" reverseOrder={false} />
           <h3 className="form-title">Let's get connected</h3>
+
+          {/* 🛡️ Honeypot field (hidden from users) */}
+          <div className="hp-field" style={{ display: 'none' }}>
+            <input
+              type="text"
+              name="honeypot"
+              tabIndex="-1"
+              autocomplete="off"
+              value={formData.honeypot}
+              onChange={handleChange}
+            />
+          </div>
 
           {showSuccess && (
             <div className="success-message">
