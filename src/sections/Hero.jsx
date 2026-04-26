@@ -54,6 +54,8 @@ const Hero = () => {
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
+          width: 100%;
+          max-width: 100vw;
         }
 
         .hero-section::before {
@@ -198,6 +200,7 @@ const Hero = () => {
             width: 100%;
             display: flex;
             justify-content: center;
+            overflow: hidden;
           }
 
           .code-block-decoration {
@@ -206,9 +209,13 @@ const Hero = () => {
             max-width: 100%;
             font-size: 0.8rem;
             padding: 1.25rem;
-            overflow-x: auto;
-            white-space: pre; /* Keep code formatting */
-            text-align: left; /* Keep code left aligned */
+            text-align: left;
+            box-sizing: border-box;
+          }
+
+          .code-block-decoration pre {
+            white-space: pre-wrap;
+            word-break: break-word;
           }
         }
 
@@ -227,9 +234,10 @@ const Hero = () => {
           
           .code-block-decoration {
             padding: 1rem;
-            font-size: 0.7rem;
-            max-width: calc(100vw - 2rem); /* Force it to stay within viewport */
-            margin: 0 auto;
+            font-size: 0.72rem;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
           }
 
           .hero-buttons {
@@ -237,7 +245,8 @@ const Hero = () => {
           }
 
           .hero-visual {
-            padding: 0 10px;
+            padding: 0;
+            width: 100%;
           }
         }
       `}</style>
