@@ -32,8 +32,9 @@ const Hero = () => {
               <code>
                 <span className="keyword">const</span> developer = {'{'}
                 {'\n'}  name: <span className="string">'Aakash'</span>,
-                {'\n'}  skills: [<span className="string">'React'</span>, <span className="string">'Java'</span>, <span className="string">'C++'</span>],
+                {'\n'}  skills: [<span className="string">'React'</span>, <span className="string">'Express.js'</span>, <span className="string">'Node.js'</span>, <span className="string">'MongoDB'</span>]
                 {'\n'}  hardWorker: <span className="boolean">true</span>
+                {'\n'}  openToWork: <span className="boolean">true</span>
                 {'\n'}{'}'}
               </code>
             </pre>
@@ -107,6 +108,8 @@ const Hero = () => {
         .hero-buttons {
           display: flex;
           gap: 1rem;
+          margin-bottom: 2rem;
+          cursor: pointer;
         }
 
         .hero-visual {

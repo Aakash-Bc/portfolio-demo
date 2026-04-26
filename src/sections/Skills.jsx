@@ -11,7 +11,7 @@ const Skills = () => {
     {
       category: 'Languages',
       icon: <FaCode />,
-      items: ['C', 'C++', 'Java', 'PHP', 'JavaScript']
+      items: ['C', 'C++', 'Java Basics', 'PHP Basics', 'JavaScript']
     },
     {
       category: 'Frontend',
@@ -66,6 +66,7 @@ const Skills = () => {
           background-position: center;
           background-attachment: fixed;
           position: relative;
+          padding-top: 6px; /* Removed top padding */
         }
 
         .skills-section::before {

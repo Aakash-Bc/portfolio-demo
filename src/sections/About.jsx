@@ -1,4 +1,5 @@
 import React from 'react';
+import profileImg from '../assets/Profile.jpeg';
 
 const About = () => {
   return (
@@ -24,25 +25,39 @@ const About = () => {
 
             <div className="education-card">
               <h3>Education</h3>
+              <div className="edu-items">
+                <span className="degree">High School</span>
+                <span className="school">Tribhuvan Model Secondary School-Kohalpur, Banke</span>
+                <span className="year">2022</span>
+              </div>
               <div className="edu-item">
                 <span className="degree">Bachelors in Computer Application (BCA)</span>
-                <span className="school">Pokhara university </span>
-                <span className="year">Current 7th sem</span>
+                <span className="school">Pokhara University </span>
+                <span className="school">Citizen College, Kumaripati-Lalitpur</span>
+                <span className="year">Running 8th sem</span>
               </div>
             </div>
           </div>
 
-          <div className="about-stats">
-            <StatItem end={4} suffix="+" label="Major Projects" />
-            <StatItem end={8} suffix="+" label="Tech Skills" />
-            <StatItem end={100} suffix="%" label="Dedication" />
+          <div className="about-right">
+            <div className="about-image-card">
+              <div className="profile-img-wrapper">
+                <img src={profileImg} alt="Aakash" className="profile-img" />
+              </div>
+            </div>
+            
+            <div className="about-stats">
+              <StatItem end={5} suffix="+" label="Major Projects" />
+              <StatItem end={8} suffix="+" label="Tech Skills" />
+              <StatItem end={100} suffix="%" label="Dedication" />
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
         .section-container {
-          padding: var(--section-spacing) 0;
+          padding: 0 0 var(--section-spacing) 0; /* Removed top padding */
           background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop');
           background-size: cover;
           background-position: center;
@@ -70,7 +85,7 @@ const About = () => {
           display: grid;
           grid-template-columns: 1.5fr 1fr;
           gap: 4rem;
-          align-items: center;
+          align-items: flex-start;
         }
 
         .about-lead {
@@ -84,7 +99,7 @@ const About = () => {
           background: var(--bg-card);
           padding: 2rem;
           border-radius: var(--border-radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: none; /* Removed border */
           box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
           animation: fadeUp 0.8s ease-out forwards;
           margin-bottom: 2rem;
@@ -139,7 +154,7 @@ const About = () => {
           background: var(--bg-card);
           padding: 1.5rem;
           border-radius: var(--border-radius-md);
-          border-left: 4px solid var(--accent-secondary);
+          border: none; /* Removed border */
           margin-top: 2rem;
         }
 
@@ -152,6 +167,11 @@ const About = () => {
           display: flex;
           flex-direction: column;
         }
+        .edu-items {
+          display: flex;
+          flex-direction: column;
+          margin-top: 1rem;
+        }
 
         .degree {
           font-weight: 600;
@@ -163,56 +183,114 @@ const About = () => {
           font-size: 0.9rem;
         }
         
+        .about-right {
+          display: flex;
+          flex-direction: column;
+          gap: 2.5rem;
+        }
+
+        .about-image-card {
+          position: relative;
+          width: 360px; /* Increased size */
+          height: 360px; /* Increased size */
+          margin: 0 auto;
+          border-radius: 50%;
+          padding: 0; /* Removed padding/border */
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          animation: float 6s ease-in-out infinite;
+          overflow: hidden;
+        }
+
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+          100% { transform: translateY(0px); }
+        }
+
+        .profile-img-wrapper {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+          position: relative;
+          z-index: 2;
+        }
+
+        .profile-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 20%; /* Adjusted to show more of the head */
+          transition: transform 0.5s ease;
+        }
+
+        .about-image-card:hover .profile-img {
+          transform: scale(1.1);
+        }
+
         .about-stats {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
+          gap: 1.5rem;
         }
 
         .stat-item {
           background: var(--bg-card);
-          padding: 2rem;
+          padding: 1.5rem;
           border-radius: var(--border-radius-lg);
           text-align: center;
-          transition: transform 0.3s ease;
-          border: 1px solid rgba(255,255,255,0.05);
+          transition: all 0.3s ease;
+          border: none; /* Removed border */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
 
         .stat-item:hover {
           transform: translateY(-5px);
           border-color: var(--accent-primary);
+          box-shadow: 0 10px 20px -5px rgba(109, 40, 217, 0.3);
         }
 
         .stat-number {
           display: block;
-          font-size: 3rem;
+          font-size: 2.2rem;
           font-weight: 800;
-          color: var(--accent-secondary);
-          margin-bottom: 0.5rem;
+          color: var(--accent-primary);
+          margin-bottom: 0.25rem;
+          line-height: 1;
         }
 
         .stat-label {
           color: var(--text-secondary);
-          font-size: 0.9rem;
+          font-size: 0.75rem;
           text-transform: uppercase;
-          letter-spacing: 1px;
+          letter-spacing: 1.5px;
+          font-weight: 600;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
           .about-content {
             grid-template-columns: 1fr;
+            gap: 3rem;
           }
           
-          .about-stats {
-            grid-template-columns: repeat(3, 1fr);
+          .about-right {
+            max-width: 500px;
+            margin: 0 auto;
           }
         }
-        
+
         @media (max-width: 500px) {
           .about-stats {
             grid-template-columns: 1fr;
           }
         }
+
         .about-title {
           font-family: 'Dancing Script', cursive;
           font-style: italic;
@@ -223,6 +301,7 @@ const About = () => {
           -webkit-background-clip: text;
           color: transparent;
           display: inline-block;
+          margin-bottom: 3rem;
         }
       `}</style>
     </section>

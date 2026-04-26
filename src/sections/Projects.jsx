@@ -4,6 +4,7 @@ import movieImg from '../assets/project-images/movie-booking.png';
 import restaurantImg from '../assets/project-images/restaurant.png';
 import jobPortalImg from '../assets/project-images/job-portal.png';
 import eyeDetectionImg from '../assets/project-images/eye-detection.png';
+import expensesTrackingImg from '../assets/project-images/expenses-tracking.png';
 import projectsBg from '../assets/hero-bg.png'; // Reusing hero abstract bg
 
 const Projects = () => {
@@ -45,6 +46,15 @@ const Projects = () => {
       link: '#',
       github: 'https://github.com/Aakash-Bc/Eye-Blink-Detection',
       image: eyeDetectionImg
+    },
+    {
+      title: 'Expenses Tracking',
+      description: 'A web-based expense tracking application that helps users record, categorize, and monitor their daily income and expenses for better financial management.',
+      longDescription: 'Built using the MERN stack, this Expenses Tracking System allows users to securely manage their personal finances by adding income and expense records, categorizing transactions, and viewing detailed financial summaries. The system provides real-time balance calculation, transaction history, and visual insights through charts and reports, helping users understand their spending habits and make smarter financial decisions. It offers a responsive user interface, secure authentication, and efficient data storage for a seamless expense management experience.',
+      tags: ['React', 'TailwindCSS', 'Express.js', 'Node.js', 'MongoDB'],
+      link: '#',
+      github: 'https://github.com/Aakash-Bc/Expenses-Tracking',
+      image: expensesTrackingImg
     }
   ];
 
