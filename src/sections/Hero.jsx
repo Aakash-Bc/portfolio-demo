@@ -158,7 +158,7 @@ const Hero = () => {
 
           .hero-content {
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2rem;
           }
 
           .hero-title {
@@ -170,7 +170,7 @@ const Hero = () => {
           }
 
           .hero-description {
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 2rem;
             font-size: 1rem;
             max-width: 100%;
           }
@@ -179,6 +179,8 @@ const Hero = () => {
             justify-content: center;
             flex-direction: column;
             width: 100%;
+            max-width: 300px;
+            margin: 0 auto 2rem;
           }
 
           .btn {
@@ -188,14 +190,16 @@ const Hero = () => {
 
           .hero-visual {
             margin-bottom: 2rem;
+            width: 100%;
           }
 
           .code-block-decoration {
             transform: none;
             width: 100%;
-            max-width: 400px;
+            max-width: 100%;
             font-size: 0.8rem;
-            padding: 1.5rem;
+            padding: 1.25rem;
+            overflow-x: auto;
           }
         }
 
@@ -215,6 +219,10 @@ const Hero = () => {
           .code-block-decoration {
             padding: 1rem;
             font-size: 0.7rem;
+          }
+
+          .hero-buttons {
+            gap: 0.75rem;
           }
         }
       `}</style>

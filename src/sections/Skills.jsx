@@ -182,9 +182,30 @@ const Skills = () => {
           }
         }
 
-        @keyframes fadeIn {
-          from { opacity: 0; transform: scale(0.9); }
-          to { opacity: 1; transform: scale(1); }
+        @media (max-width: 768px) {
+          .skills-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+          }
+
+          .skill-card {
+            padding: 1.25rem;
+          }
+
+          .skill-category {
+            font-size: 1.1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .skills-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .skill-tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+          }
         }
       `}</style>
     </section>

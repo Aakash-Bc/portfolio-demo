@@ -381,9 +381,51 @@ const Projects = () => {
           to { opacity: 1; }
         }
 
-        @keyframes slideUp {
-          from { transform: translateY(50px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
+        @media (max-width: 768px) {
+          .projects-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+          }
+
+          .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+          }
+
+          .modal-image {
+            height: 200px;
+          }
+
+          .modal-body {
+            padding: 1.5rem;
+          }
+
+          .modal-body h3 {
+            font-size: 1.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .projects-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .modal-content {
+            width: 95%;
+          }
+
+          .modal-image {
+            height: 180px;
+          }
+
+          .modal-body {
+            padding: 1.25rem;
+          }
+
+          .modal-desc {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+          }
         }
       `}</style>
     </section>

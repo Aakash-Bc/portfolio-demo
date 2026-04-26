@@ -267,7 +267,52 @@ const Contact = () => {
         .error-text { color: var(--error); font-size: 0.8rem; margin-top: 0.3rem; display: block; }
         .required { color: var(--error); }
         .success-message { background: rgba(34,197,94,0.1); color: var(--success); padding: 1rem; border-radius: var(--border-radius-sm); border: 1px solid var(--success); margin-bottom: 2rem; text-align: center; font-weight: 600; }
-        @media (max-width: 768px) { .contact-container { grid-template-columns: 1fr; } }
+        @media (max-width: 1024px) {
+          .contact-container {
+            gap: 2rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .contact-container {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+
+          .contact-text {
+            text-align: center;
+          }
+
+          .section-title {
+            text-align: center !important;
+          }
+
+          .info-item {
+            justify-content: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contact-form {
+            padding: 1.5rem;
+          }
+
+          .form-title {
+            font-size: 2rem;
+          }
+
+          .info-item {
+            flex-direction: column;
+            text-align: center;
+            padding: 1rem;
+          }
+
+          .icon-box {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+          }
+        }
       `}</style>
     </section>
   );

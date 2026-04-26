@@ -280,14 +280,43 @@ const About = () => {
           }
           
           .about-right {
-            max-width: 500px;
+            max-width: 100%;
             margin: 0 auto;
+          }
+
+          .about-image-card {
+            width: 300px;
+            height: 300px;
           }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 768px) {
+          .about-stats {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+          }
+          
+          .bio-card, .education-card {
+            padding: 1.5rem;
+          }
+
+          .about-title {
+            font-size: 2.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .about-image-card {
+            width: 240px;
+            height: 240px;
+          }
+
           .about-stats {
             grid-template-columns: 1fr;
+          }
+
+          .stat-number {
+            font-size: 1.8rem;
           }
         }
 

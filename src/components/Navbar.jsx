@@ -182,6 +182,18 @@ const Navbar = () => {
         }
 
         @media (max-width: 768px) {
+          .navbar {
+            padding: 1rem 0;
+          }
+
+          .logo {
+            font-size: 1.5rem;
+          }
+
+          .dot {
+            font-size: 1.8rem;
+          }
+
           .desktop-menu {
             display: none;
           }
@@ -217,34 +229,32 @@ const Navbar = () => {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            gap: 2.5rem;
-            padding: 60px 30px 40px;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(15px);
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            padding: 2rem;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(20px);
           }
 
           .mobile-links {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 1.5rem;
+            text-align: center;
           }
 
           .mobile-nav-link {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #ffffff;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             text-decoration: none;
             opacity: 0;
-            transform: translateX(20px);
+            transform: translateY(20px);
             transition: 0.4s ease;
             padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
           }
 
           .mobile-nav-link::before {
