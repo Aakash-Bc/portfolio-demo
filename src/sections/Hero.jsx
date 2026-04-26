@@ -140,6 +140,11 @@ const Hero = () => {
           transition: transform 0.3s ease;
         }
 
+        .code-block-decoration pre {
+          margin: 0;
+          overflow: visible;
+        }
+
         .code-block-decoration:hover {
           transform: rotate(0deg) scale(1.02);
         }
@@ -191,6 +196,8 @@ const Hero = () => {
           .hero-visual {
             margin-bottom: 2rem;
             width: 100%;
+            display: flex;
+            justify-content: center;
           }
 
           .code-block-decoration {
@@ -200,6 +207,8 @@ const Hero = () => {
             font-size: 0.8rem;
             padding: 1.25rem;
             overflow-x: auto;
+            white-space: pre; /* Keep code formatting */
+            text-align: left; /* Keep code left aligned */
           }
         }
 
@@ -219,10 +228,16 @@ const Hero = () => {
           .code-block-decoration {
             padding: 1rem;
             font-size: 0.7rem;
+            max-width: calc(100vw - 2rem); /* Force it to stay within viewport */
+            margin: 0 auto;
           }
 
           .hero-buttons {
             gap: 0.75rem;
+          }
+
+          .hero-visual {
+            padding: 0 10px;
           }
         }
       `}</style>
