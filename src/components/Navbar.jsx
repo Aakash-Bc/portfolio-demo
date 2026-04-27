@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +30,10 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <motion.div
+        className="scroll-progress-bar"
+        style={{ scaleX, transformOrigin: "0%" }}
+      />
       <div className="container nav-content">
         <a href="#home" className="logo">
           Aakash<span className="dot">.</span>
@@ -90,6 +102,16 @@ const Navbar = () => {
           background: rgba(5, 5, 5, 0.85);
           backdrop-filter: blur(10px);
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .scroll-progress-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+          z-index: 1001;
         }
 
         .nav-content {

@@ -1,14 +1,29 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import profileImg from '../assets/Profile.jpeg';
 
 const About = () => {
   return (
     <section id="about" className="section-container">
       <div className="container">
-        <h2 className="section-title about-title">About Me</h2>
+        <motion.h2 
+          className="section-title about-title"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          About Me
+        </motion.h2>
 
         <div className="about-content">
-          <div className="about-text">
+          <motion.div 
+            className="about-text"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <div className="bio-card">
               <p className="about-lead">
                 I am a <span className="highlight">BCA student</span> tailored with a strong foundation in computer science and a knack for building efficient digital solutions.
@@ -37,9 +52,15 @@ const About = () => {
                 <span className="year">Running 8th sem</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="about-right">
+          <motion.div 
+            className="about-right"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             <div className="about-image-card">
               <div className="profile-img-wrapper">
                 <img src={profileImg} alt="Aakash" className="profile-img" />
@@ -51,7 +72,7 @@ const About = () => {
               <StatItem end={8} suffix="+" label="Tech Skills" />
               <StatItem end={100} suffix="%" label="Dedication" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -101,7 +122,6 @@ const About = () => {
           border-radius: var(--border-radius-lg);
           border: none; /* Removed border */
           box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-          animation: fadeUp 0.8s ease-out forwards;
           margin-bottom: 2rem;
           transition: all 0.3s ease;
           position: relative;
@@ -123,17 +143,6 @@ const About = () => {
           transform: translateY(-5px);
           border-color: var(--accent-primary);
           box-shadow: 0 20px 40px -10px rgba(109, 40, 217, 0.2);
-        }
-
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
         }
 
         .about-text p {
@@ -233,7 +242,7 @@ const About = () => {
 
         .about-stats {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 1.5rem;
         }
 

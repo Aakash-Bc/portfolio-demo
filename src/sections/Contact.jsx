@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhoneAlt, FaViber, FaMapMarkerAlt } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
@@ -118,7 +119,13 @@ const Contact = () => {
     <section id="contact" className="section-container contact-section">
       <div className="container contact-container">
         {/* Contact Info */}
-        <div className="contact-text">
+        <motion.div 
+          className="contact-text"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="section-title" style={{ textAlign: 'left' }}>Let's Work Together</h2>
           <p>
             I'm currently available for freelance work or internship opportunities.
@@ -143,10 +150,17 @@ const Contact = () => {
               <div><h3>Location</h3><p>Kathmandu, Nepal</p></div>
             </a>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Form */}
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <motion.form 
+          className="contact-form" 
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <Toaster position="top-right" reverseOrder={false} />
           <h3 className="form-title">Let's get connected</h3>
 
@@ -243,7 +257,7 @@ const Contact = () => {
           <button type="submit" className="btn btn-primary" disabled={sending}>
             {sending ? "Sending..." : "Send Message"}
           </button>
-        </form>
+        </motion.form>
       </div>
 
       {/* Styles */}

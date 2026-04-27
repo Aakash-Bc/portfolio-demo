@@ -1,16 +1,32 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import heroBg from '../assets/hero-bg.png';
 
 const Hero = () => {
   return (
     <section id="home" className="hero-section">
       <div className="container hero-content">
-        <div className="hero-text-content">
-          <span className="greeting">Hello, I'm</span>
-          <h1 className="hero-title">
-            Aakash <br />
-            <span className="gradient-text">Budhathoki</span>
-          </h1>
+        <motion.div 
+          className="hero-text-content"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.div
+            animate={{ x: [-3, 3, -3, 3, 0] }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              repeatType: "mirror",
+              ease: "linear"
+            }}
+          >
+            <span className="greeting">Hello, I'm</span>
+            <h1 className="hero-title">
+              Aakash <br />
+              <span className="gradient-text">Budhathoki</span>
+            </h1>
+          </motion.div>
           <h2 className="hero-subtitle">
             Full-Stack Developer & <br />
             Computer Vision Enthusiast
@@ -23,8 +39,14 @@ const Hero = () => {
             <a href="#projects" className="btn btn-primary">View Projects</a>
             <a href="#contact" className="btn btn-outline">Contact Me</a>
           </div>
-        </div>
-        <div className="hero-visual">
+        </motion.div>
+        
+        <motion.div 
+          className="hero-visual"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        >
           <div className="glow-circle"></div>
           {/* We can add a 3D element or Image here later */}
           <div className="code-block-decoration">
@@ -39,7 +61,7 @@ const Hero = () => {
               </code>
             </pre>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`

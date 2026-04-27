@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FaGithub, FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
 import movieImg from '../assets/project-images/movie-booking.png';
 import restaurantImg from '../assets/project-images/restaurant.png';
@@ -61,11 +62,26 @@ const Projects = () => {
   return (
     <section id="projects" className="section-container projects-section">
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <h2 className="section-title">Featured Projects</h2>
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Featured Projects
+        </motion.h2>
 
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <div key={index} className="project-card">
+            <motion.div 
+              key={index} 
+              className="project-card"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
               <div className="project-image">
                 <img src={project.image} alt={project.title} loading="lazy" />
                 <div className="overlay"></div>
@@ -96,14 +112,20 @@ const Projects = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
       {selectedProject && (
         <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
+          <motion.div 
+            className="modal-content" 
+            onClick={e => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+          >
             <button className="modal-close" onClick={() => setSelectedProject(null)}>
               <FaTimes />
             </button>
@@ -127,7 +149,7 @@ const Projects = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
 
@@ -299,7 +321,6 @@ const Projects = () => {
           border: 1px solid var(--accent-primary);
           position: relative;
           overflow: hidden;
-          animation: slideUp 0.3s ease;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 

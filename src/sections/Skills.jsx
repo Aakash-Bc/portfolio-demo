@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaCode, FaDatabase, FaLayerGroup, FaDesktop, FaTools, FaUsers } from 'react-icons/fa';
 
 const Skills = () => {
@@ -38,23 +39,38 @@ const Skills = () => {
   return (
     <section id="skills" className="section-container skills-section">
       <div className="container">
-        <h2 className="section-title">Technical Proficiency</h2>
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Technical Proficiency
+        </motion.h2>
 
         <div className="skills-grid">
           {skills.map((skillGroup, index) => (
-            <div key={index} className="skill-card" style={{ animationDelay: `${index * 100}ms` }}>
+            <motion.div 
+              key={index} 
+              className="skill-card"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
               <div className="card-header">
                 <div className="cat-icon">{skillGroup.icon}</div>
                 <h3 className="skill-category">{skillGroup.category}</h3>
               </div>
               <div className="skill-tags">
                 {skillGroup.items.map((skill, idx) => (
-                  <span key={skill} className="skill-tag" style={{ animationDelay: `${(index * 100) + (idx * 50)}ms` }}>
+                  <span key={skill} className="skill-tag">
                     {skill}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -101,8 +117,6 @@ const Skills = () => {
           border-radius: var(--border-radius-lg);
           border: 1px solid rgba(255,255,255,0.05);
           transition: all 0.4s ease;
-          opacity: 0;
-          animation: fadeUp 0.6s ease-out forwards;
         }
 
         .skill-card:hover {
@@ -159,8 +173,6 @@ const Skills = () => {
           color: var(--text-secondary);
           border: 1px solid transparent;
           transition: all 0.3s ease;
-          opacity: 0;
-          animation: fadeIn 0.5s ease-out forwards;
           font-weight: 500;
         }
 
@@ -169,17 +181,6 @@ const Skills = () => {
           border-color: var(--accent-secondary);
           color: var(--text-primary);
           transform: translateY(-2px);
-        }
-
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
         }
 
         @media (max-width: 768px) {

@@ -1,10 +1,17 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container footer-content">
+      <motion.div 
+        className="container footer-content"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="footer-grid">
           <div className="footer-brand">
             <h2 className="brand-logo">Aakash<span className="dot">.</span></h2>
@@ -38,9 +45,8 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Aakash Budhathoki. All rights reserved.</p>
-          <p className="made-with">Made with <span className="heart">♥</span> in Nepal</p>
         </div>
-      </div>
+      </motion.div>
 
       <style>{`
         .footer {
