@@ -64,10 +64,10 @@ const Projects = () => {
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <motion.h2 
           className="section-title"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1.0 }}
         >
           Featured Projects
         </motion.h2>
@@ -77,10 +77,10 @@ const Projects = () => {
             <motion.div 
               key={index} 
               className="project-card"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 1.0, delay: index * 0.1 }}
             >
               <div className="project-image">
                 <img src={project.image} alt={project.title} loading="lazy" />

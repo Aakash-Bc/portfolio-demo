@@ -6,46 +6,60 @@ const Hero = () => {
   return (
     <section id="home" className="hero-section">
       <div className="container hero-content">
-        <motion.div 
-          className="hero-text-content"
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+        <div className="hero-text-content">
           <motion.div
-            animate={{ x: [-3, 3, -3, 3, 0] }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              repeatType: "mirror",
-              ease: "linear"
-            }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="greeting">Hello, I'm</span>
-            <h1 className="hero-title">
-              Aakash <br />
-              <span className="gradient-text">Budhathoki</span>
-            </h1>
+            <motion.div
+              animate={{ x: [-2, 2, -2, 2, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="greeting">Hello, I'm</span>
+              <h1 className="hero-title">
+                Aakash <br />
+                <span className="gradient-text">Budhathoki</span>
+              </h1>
+            </motion.div>
           </motion.div>
-          <h2 className="hero-subtitle">
+
+          <motion.h2 
+            className="hero-subtitle"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             Full-Stack Developer & <br />
             Computer Vision Enthusiast
-          </h2>
-          <p className="hero-description">
+          </motion.h2>
+
+          <motion.p 
+            className="hero-description"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
             I build accessible, pixel-perfect, secure, and performant web applications.
             Passionate about solving problems through code.
-          </p>
-          <div className="hero-buttons">
+          </motion.p>
+
+          <motion.div 
+            className="hero-buttons"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          >
             <a href="#projects" className="btn btn-primary">View Projects</a>
             <a href="#contact" className="btn btn-outline">Contact Me</a>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
         
         <motion.div 
           className="hero-visual"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
         >
           <div className="glow-circle"></div>
           {/* We can add a 3D element or Image here later */}

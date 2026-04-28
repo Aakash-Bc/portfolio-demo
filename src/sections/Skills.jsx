@@ -41,10 +41,10 @@ const Skills = () => {
       <div className="container">
         <motion.h2 
           className="section-title"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1.0 }}
         >
           Technical Proficiency
         </motion.h2>
@@ -54,10 +54,10 @@ const Skills = () => {
             <motion.div 
               key={index} 
               className="skill-card"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 1.0, delay: index * 0.1 }}
             >
               <div className="card-header">
                 <div className="cat-icon">{skillGroup.icon}</div>

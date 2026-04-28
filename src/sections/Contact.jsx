@@ -119,47 +119,60 @@ const Contact = () => {
     <section id="contact" className="section-container contact-section">
       <div className="container contact-container">
         {/* Contact Info */}
-        <motion.div 
-          className="contact-text"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="section-title" style={{ textAlign: 'left' }}>Let's Work Together</h2>
-          <p>
+        <div className="contact-text">
+          <motion.h2 
+            className="section-title" 
+            style={{ textAlign: 'left' }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.0 }}
+          >
+            Let's Work Together
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.0, delay: 0.2 }}
+          >
             I'm currently available for freelance work or internship opportunities.
             If you have a project that needs some creative touch, or just want to say hi, my inbox is always open.
-          </p>
+          </motion.p>
 
           <div className="contact-info">
-            <a href="mailto:aakashbc24@gmail.com" className="info-item" target="_blank" rel="noopener noreferrer">
-              <div className="icon-box"><FaEnvelope /></div>
-              <div><h3>Email</h3><p>aakashbc24@gmail.com</p></div>
-            </a>
-            <a href="tel:+9779864148519" className="info-item">
-              <div className="icon-box"><FaPhoneAlt /></div>
-              <div><h3>Phone</h3><p>9864148519</p></div>
-            </a>
-            <a href="viber://chat?number=%2B9779864148519" className="info-item">
-              <div className="icon-box"><FaViber /></div>
-              <div><h3>Viber</h3><p>9864148519</p></div>
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kathmandu,+Nepal" className="info-item" target="_blank" rel="noopener noreferrer">
-              <div className="icon-box"><FaMapMarkerAlt /></div>
-              <div><h3>Location</h3><p>Kathmandu, Nepal</p></div>
-            </a>
+            {[
+              { href: "mailto:aakashbc24@gmail.com", icon: <FaEnvelope />, title: "Email", text: "aakashbc24@gmail.com" },
+              { href: "tel:+9779864148519", icon: <FaPhoneAlt />, title: "Phone", text: "9864148519" },
+              { href: "viber://chat?number=%2B9779864148519", icon: <FaViber />, title: "Viber", text: "9864148519" },
+              { href: "https://www.google.com/maps/search/?api=1&query=Kathmandu,+Nepal", icon: <FaMapMarkerAlt />, title: "Location", text: "Kathmandu, Nepal" }
+            ].map((item, index) => (
+              <motion.a 
+                key={index}
+                href={item.href} 
+                className="info-item" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
+              >
+                <div className="icon-box">{item.icon}</div>
+                <div><h3>{item.title}</h3><p>{item.text}</p></div>
+              </motion.a>
+            ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Contact Form */}
         <motion.form 
           className="contact-form" 
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 1.2, delay: 0.2 }}
         >
           <Toaster position="top-right" reverseOrder={false} />
           <h3 className="form-title">Let's get connected</h3>

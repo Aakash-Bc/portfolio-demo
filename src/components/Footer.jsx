@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Aakash Budhathoki. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} @Aakash Budhathoki. All rights reserved.</p>
         </div>
       </motion.div>
 

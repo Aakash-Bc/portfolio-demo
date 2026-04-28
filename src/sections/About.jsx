@@ -8,23 +8,23 @@ const About = () => {
       <div className="container">
         <motion.h2 
           className="section-title about-title"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1.0 }}
         >
           About Me
         </motion.h2>
 
         <div className="about-content">
-          <motion.div 
-            className="about-text"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="bio-card">
+          <div className="about-text">
+            <motion.div 
+              className="bio-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 1.2, delay: 0.2 }}
+            >
               <p className="about-lead">
                 I am a <span className="highlight">BCA student</span> tailored with a strong foundation in computer science and a knack for building efficient digital solutions.
               </p>
@@ -36,9 +36,15 @@ const About = () => {
                 Whether it's developing a complex <span className="highlight">Movie Ticket Booking System</span> or an innovative <span className="highlight">Eye Blink Detection System</span> using Computer Vision,
                 I am always eager to tackle new challenges and expand my skillset.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="education-card">
+            <motion.div 
+              className="education-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 1.2, delay: 0.4 }}
+            >
               <h3>Education</h3>
               <div className="edu-items">
                 <span className="degree">High School</span>
@@ -51,28 +57,28 @@ const About = () => {
                 <span className="school">Citizen College, Kumaripati-Lalitpur</span>
                 <span className="year">Running 8th sem</span>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
-          <motion.div 
-            className="about-right"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <div className="about-image-card">
+          <div className="about-right">
+            <motion.div 
+              className="about-image-card"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.6 }}
+            >
               <div className="profile-img-wrapper">
                 <img src={profileImg} alt="Aakash" className="profile-img" />
               </div>
-            </div>
+            </motion.div>
             
             <div className="about-stats">
-              <StatItem end={5} suffix="+" label="Major Projects" />
-              <StatItem end={8} suffix="+" label="Tech Skills" />
-              <StatItem end={100} suffix="%" label="Dedication" />
+              <StatItem end={5} suffix="+" label="Major Projects" delay={0.8} />
+              <StatItem end={8} suffix="+" label="Tech Skills" delay={1.0} />
+              <StatItem end={100} suffix="%" label="Dedication" delay={1.2} />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -346,7 +352,7 @@ const About = () => {
   );
 };
 
-const StatItem = ({ end, suffix, label }) => {
+const StatItem = ({ end, suffix, label, delay = 0 }) => {
   const [count, setCount] = React.useState(0);
   const ref = React.useRef(null);
   const [isVisible, setIsVisible] = React.useState(false);
@@ -393,12 +399,19 @@ const StatItem = ({ end, suffix, label }) => {
   }, [isVisible, end]);
 
   return (
-    <div className="stat-item" ref={ref}>
+    <motion.div 
+      className="stat-item" 
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.0, delay }}
+    >
       <span className="stat-number">
         {count}{suffix}
       </span>
       <span className="stat-label">{label}</span>
-    </div>
+    </motion.div>
   );
 };
 
